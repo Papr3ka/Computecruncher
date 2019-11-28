@@ -1,5 +1,10 @@
 ComputeCruncher
 
+ver 1.2.004
+added wait() function
+added ending
+rearranged cmd print order
+
 ver 1.1.003
 added length
 added write to text
