@@ -1,28 +1,33 @@
 ComputeCruncher
 
-ver 1.2.004
+ver 1.0.05
 added wait() function
 added ending
 rearranged cmd print order
 
-ver 1.1.003
+ver 1.0.04
 added length
 added write to text
 added utf-8 encoding
 rearranged some code
 
-ver 1.1.002
+------------------------
+
+stable ver 0.1.03
 further optimizations
 replaced while loop with for loop
 added precision
 
-ver 1.1.001
+beta ver 0.0.02
 fixed errors
 optimizations
 added Euler
 added Root
 
-ver 1.0.000
-ComputeCruncher released
+beta ver 0.0.01
 added BBP_Pi
 added inputs
+replaced goto with functions
+
+beta ver 0.0.0
+ComputeCruncher released
