@@ -1,5 +1,10 @@
 ComputeCruncher
 
+ver 1.0.06
+added invalid input detection for options
+added invalid input detection for accurate precision
+fixed length output
+
 ver 1.0.05
 added wait() function
 added ending
