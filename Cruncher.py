@@ -99,7 +99,7 @@ print("1:PI\n2:Euler\n3:Root\n4:Golden Ratio")
 option = int(input("Option:"))
 clear()
 if option < 5 and option > 0:
-    maxpr = int(input("Accurate Precicion:"))
+    maxpr = int(input("Precicion:"))
 if option == 1 or option == 2:
     print(r"Output Text file Y/N")
     textfc = str(input())
