@@ -28,7 +28,9 @@ def BBP_Pi():
     clear()
     print("Done!\n")
     print(finalpi)
-    stlength = len(str(finalpi)) - 2
+    if maxpr == 0:
+        lensub = 0
+    stlength = len(str(finalpi)) - lensub
     print("\nLength",stlength)
     if textfc == "Y" or textfc == "y":
         outFile = open("PI.txt", "w+")
@@ -45,7 +47,9 @@ def Euler():
     clear()
     print("Done!\n")
     print(finaleuler)
-    stlength = len(str(finaleuler)) - 2
+    if maxpr == 0:
+        lensub = 0
+    stlength = len(str(finaleuler)) - lensub
     print("\nLength",stlength)
     if textfc == "Y" or textfc == "y":
         outFile = open("Euler.txt", "w+")
@@ -79,16 +83,23 @@ def Gratio():
     clear()
     print("Done!\n")
     print(finalgolden)
-    stlength = len(str(finalgolden)) - 1
+    if maxpr == 0:
+        lensub = 0
+    else:
+        lensub = 1
+    stlength = len(str(finalgolden)) - lensub
     print("\nLength",stlength)
 textfc = "n"
 waitsetc = 1
+maxpr = 0
+lensub = 2
 clear()
 print(r"Select Constant to compute")
 print("1:PI\n2:Euler\n3:Root\n4:Golden Ratio")
 option = int(input("Option:"))
 clear()
-maxpr = int(input("Accurate Precicion:"))
+if option < 5 and option > 0:
+    maxpr = int(input("Accurate Precicion:"))
 if option == 1 or option == 2:
     print(r"Output Text file Y/N")
     textfc = str(input())
@@ -106,5 +117,11 @@ if option == 4:
     getcontext().prec = maxpr + 8
     Gratio()
 print("\nAccurate Precision",maxpr)
+if option > 4 or option < 1:
+    clear()
+    print("Invalid Option")
+if maxpr < 0:
+    clear()
+    print("Invalid Option")
 waitsetc = 0
 wait()
