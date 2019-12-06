@@ -4,7 +4,7 @@
 import math
 import os
 import platform
-import time
+from timeit import default_timer as timer
 from decimal import *
 from decimal import Decimal as dec
 def clear():
@@ -29,12 +29,12 @@ def BBP_Pi():
     clear()
     x = 0
     pi = 0
-    tstart = time.process_time()
+    tstart = timer()
     for x in range(0,maxpr): 
         pi += dec((dec(1) / dec(16) ** dec(x)) * (dec(4) / (dec(8) * x + dec(1)) - dec(2) / (dec(8) * x + dec(4)) - dec(1) / (dec(8) * x + dec(5)) - dec(1) / (dec(8) * x + dec(6))))
         print(pi)
     finalpi = dec(int(pi * dec(10 ** maxpr)) / dec(10 ** maxpr))
-    tend = time.process_time()
+    tend = timer()
     clear()
     print("Done!\n")
     print(finalpi)
@@ -44,6 +44,7 @@ def BBP_Pi():
         lensub = 1
     stlength = len(str(finalpi)) - lensub
     print("\nLength",stlength)
+    print("\nAccurate Precision",maxpr)
     print("\nTime",tend - tstart)
     if textfc == "Y" or textfc == "y":
         outFile = open("PI.txt", "w+")
@@ -53,12 +54,12 @@ def Euler():
     clear()
     x = 0
     euler = 0
-    tstart = time.process_time()
+    tstart = timer()
     for x in range(0,maxpr):
         euler += dec(dec(1) / dec(factorial(int(x))))
         print(euler)
     finaleuler = dec(int(euler * dec(10 ** maxpr)) / dec(10 ** maxpr))
-    tend = time.process_time()
+    tend = timer()
     clear()
     print("Done!\n")
     print(finaleuler)
@@ -68,6 +69,7 @@ def Euler():
         lensub = 1
     stlength = len(str(finaleuler)) - lensub
     print("\nLength",stlength)
+    print("\nAccurate Precision",maxpr)
     print("\nTime",tend - tstart)
     if textfc == "Y" or textfc == "y":
         outFile = open("Euler.txt", "w+")
@@ -78,10 +80,12 @@ def rootcrunch():
     x = dec(input("Root of:"))
     clear()
     print("Calculating")
+    tstart = timer()
     sq = dec(x ** dec(dec(1) / dec(root)))
     clear()
     print("Converting")
     finalsq = dec(int(sq * dec(10 ** maxpr)) / dec(10 ** maxpr))
+    end = timer()
     clear()
     print("Done!\n")
     print(finalsq)
@@ -91,13 +95,17 @@ def rootcrunch():
         sqvar = 0
     stlength = len(str(finalsq)) - sqvar
     print("\nLength",stlength)
+    print("\nAccurate Precision",maxpr)
+    print("\nTime",tend - tstart)
 def Gratio():
     clear()
     print("Calculating")
+    tstart = timer()
     Golden = dec(dec(dec(1) + dec(dec(5) ** dec(0.5))) / dec(2))
     clear()
     print("Converting")
     finalgolden = dec(int(Golden * dec(10 ** maxpr)) / dec(10 ** maxpr))
+    end = timer()
     clear()
     print("Done!\n")
     print(finalgolden)
@@ -107,6 +115,8 @@ def Gratio():
         lensub = 1
     stlength = len(str(finalgolden)) - lensub
     print("\nLength",stlength)
+    print("\nAccurate Precision",maxpr)
+    print("\nTime",tend - tstart)
 textfc = "n"
 waitsetc = 1
 maxpr = 0
@@ -134,7 +144,6 @@ if option == 3:
 if option == 4:
     getcontext().prec = maxpr + 8
     Gratio()
-print("\nAccurate Precision",maxpr)
 if option > 4 or option < 1:
     clear()
     print("Invalid Option")
