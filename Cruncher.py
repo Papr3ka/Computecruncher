@@ -36,6 +36,8 @@ def BBP_Pi():
     print(finalpi)
     if maxpr == 0:
         lensub = 0
+    else:
+        lensub = 1
     stlength = len(str(finalpi)) - lensub
     print("\nLength",stlength)
     if textfc == "Y" or textfc == "y":
@@ -55,6 +57,8 @@ def Euler():
     print(finaleuler)
     if maxpr == 0:
         lensub = 0
+    else:
+        lensub = 1
     stlength = len(str(finaleuler)) - lensub
     print("\nLength",stlength)
     if textfc == "Y" or textfc == "y":
