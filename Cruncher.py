@@ -53,10 +53,12 @@ def Euler():
     clear()
     x = 0
     euler = 0
+    tstart = time.process_time()
     for x in range(0,maxpr):
         euler += dec(dec(1) / dec(factorial(int(x))))
         print(euler)
     finaleuler = dec(int(euler * dec(10 ** maxpr)) / dec(10 ** maxpr))
+    tend = time.process_time()
     clear()
     print("Done!\n")
     print(finaleuler)
@@ -66,6 +68,7 @@ def Euler():
         lensub = 1
     stlength = len(str(finaleuler)) - lensub
     print("\nLength",stlength)
+    print("\nTime",tend - tstart)
     if textfc == "Y" or textfc == "y":
         outFile = open("Euler.txt", "w+")
         outFile.write(str(finaleuler))
