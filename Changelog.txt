@@ -1,5 +1,9 @@
 ComputeCruncher
 
+ver 1.0.08
+added process time counter
+rearanged print order
+
 ver 1.0.07
 fixed factorial function
 fixed issues regarding undeclared variables
