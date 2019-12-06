@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2019 Benjamin Yao
+# ComputeCruncher build 1007
 import math
 import os
 import platform
