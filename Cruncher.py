@@ -105,7 +105,7 @@ def Gratio():
     clear()
     print("Converting")
     finalgolden = dec(int(Golden * dec(10 ** maxpr)) / dec(10 ** maxpr))
-    end = timer()
+    tend = timer()
     clear()
     print("Done!\n")
     print(finalgolden)
