@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2019 Benjamin Yao
-# ComputeCruncher build 1007
+# ComputeCruncher build 1008
 import math
 import os
 import platform
+import time
 from decimal import *
 from decimal import Decimal as dec
 def clear():
@@ -28,10 +29,12 @@ def BBP_Pi():
     clear()
     x = 0
     pi = 0
+    tstart = time.process_time()
     for x in range(0,maxpr): 
         pi += dec((dec(1) / dec(16) ** dec(x)) * (dec(4) / (dec(8) * x + dec(1)) - dec(2) / (dec(8) * x + dec(4)) - dec(1) / (dec(8) * x + dec(5)) - dec(1) / (dec(8) * x + dec(6))))
         print(pi)
     finalpi = dec(int(pi * dec(10 ** maxpr)) / dec(10 ** maxpr))
+    tend = time.process_time()
     clear()
     print("Done!\n")
     print(finalpi)
@@ -41,6 +44,7 @@ def BBP_Pi():
         lensub = 1
     stlength = len(str(finalpi)) - lensub
     print("\nLength",stlength)
+    print("\nTime",tend - tstart)
     if textfc == "Y" or textfc == "y":
         outFile = open("PI.txt", "w+")
         outFile.write(str(finalpi))
