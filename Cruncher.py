@@ -17,6 +17,12 @@ def wait():
     if waitsetc == 0:
         wait = str(input("Press enter to exit..."))
     clear()
+def factorial(x):
+    ans = 1
+    for fac in range(x,1,-1):
+        ans *= fac
+    x = ans
+    return x
 def BBP_Pi():
     clear()
     x = 0
@@ -41,7 +47,7 @@ def Euler():
     x = 0
     euler = 0
     for x in range(0,maxpr):
-        euler += dec(dec(1) / dec(math.factorial(int(x))))
+        euler += dec(dec(1) / dec(factorial(int(x))))
         print(euler)
     finaleuler = dec(int(euler * dec(10 ** maxpr)) / dec(10 ** maxpr))
     clear()
