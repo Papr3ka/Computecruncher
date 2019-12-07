@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2019 Benjamin Yao
-# ComputeCruncher build 1008
 import math
 import os
 import platform
@@ -17,7 +16,7 @@ def wait():
         clear()
         wait = str(input("Press enter to continue..."))
     if waitsetc == 0:
-        wait = str(input("Press enter to exit..."))
+        wait = str(input("\nPress enter to exit..."))
     clear()
 def factorial(x):
     ans = 1
@@ -45,7 +44,7 @@ def BBP_Pi():
     stlength = len(str(finalpi)) - lensub
     print("\nLength",stlength)
     print("\nAccurate Precision",maxpr)
-    print("\nTime",tend - tstart)
+    print("Time",tend - tstart)
     if textfc == "Y" or textfc == "y":
         outFile = open("PI.txt", "w+")
         outFile.write(str(finalpi))
@@ -70,7 +69,7 @@ def Euler():
     stlength = len(str(finaleuler)) - lensub
     print("\nLength",stlength)
     print("\nAccurate Precision",maxpr)
-    print("\nTime",tend - tstart)
+    print("Time",tend - tstart)
     if textfc == "Y" or textfc == "y":
         outFile = open("Euler.txt", "w+")
         outFile.write(str(finaleuler))
@@ -96,7 +95,7 @@ def rootcrunch():
     stlength = len(str(finalsq)) - sqvar
     print("\nLength",stlength)
     print("\nAccurate Precision",maxpr)
-    print("\nTime",tend - tstart)
+    print("Time",tend - tstart)
 def Gratio():
     clear()
     print("Calculating")
@@ -152,3 +151,4 @@ if maxpr < 0:
     print("Invalid Option")
 waitsetc = 0
 wait()
+# End of Program
