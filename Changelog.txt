@@ -1,5 +1,9 @@
 ComputeCruncher
 
+ver 1.1.09
+added more options
+fixed time
+
 ver 1.0.08
 added process time counter
 rearanged print order
