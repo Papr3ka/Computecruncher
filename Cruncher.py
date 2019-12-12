@@ -40,8 +40,8 @@ def BBP_Pi():
         if dis_ch_bool:
             print(pi)
         elif x == count:
-            percom = float(int((x / maxpr) * 100000) / 1000)
-            print(percom,r"%")
+            percom = x / maxpr * 100
+            print('%.3f'%(percom),r"%")
             count += 500
     finalpi = dec(int(pi * dec(10 ** maxpr)) / dec(10 ** maxpr))
     tend = time.perf_counter()
@@ -77,8 +77,8 @@ def Euler():
         if dis_ch_bool:
             print(euler)
         elif x == count:
-            percom = float(int((x / maxpr) * 100000) / 1000)
-            print(percom,r"%")
+            percom = x / maxpr * 100
+            print('%.3f'%(percom),r"%")
             count += 500
     finaleuler = dec(int(euler * dec(10 ** maxpr)) / dec(10 ** maxpr))
     tend = time.perf_counter()
