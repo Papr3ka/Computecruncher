@@ -56,7 +56,7 @@ def BBP_Pi():
     stlength = len(str(finalpi)) - lensub
     print("\nLength",stlength)
     print("\nAccurate Precision",maxpr)
-    print("Time",int((tend - tstart) * 10000) / 10000,"Seconds")
+    print("Time:",'%.4f'%(tend - tstart),"Seconds")
     if textfc == "Y" or textfc == "y":
         outFile = open("PI.txt", "w+")
         outFile.write(str(finalpi))
@@ -92,7 +92,7 @@ def Euler():
     stlength = len(str(finaleuler)) - lensub
     print("\nLength",stlength)
     print("\nAccurate Precision",maxpr)
-    print("Time",int((tend - tstart) * 10000) / 10000,"Seconds")
+    print("Time:",'%.4f'%(tend - tstart),"Seconds")
     if textfc == "Y" or textfc == "y":
         outFile = open("Euler.txt", "w+")
         outFile.write(str(finaleuler))
@@ -118,7 +118,7 @@ def rootcrunch():
     stlength = len(str(finalsq)) - sqvar
     print("\nLength",stlength)
     print("\nAccurate Precision",maxpr)
-    print("Time",int((tend - tstart) * 10000) / 10000,"Seconds")
+    print("Time:",'%.4f'%(tend - tstart),"Seconds")
 def Gratio():
     clear()
     print("Calculating...")
@@ -138,7 +138,7 @@ def Gratio():
     stlength = len(str(finalgolden)) - lensub
     print("\nLength",stlength)
     print("\nAccurate Precision",maxpr)
-    print("Time",int((tend - tstart) * 10000) / 10000,"Seconds")
+    print("Time:",'%.4f'%(tend - tstart),"Seconds")
 textfc = "n"
 dis_ch_var = "n"
 dis_ch_bool = 0
