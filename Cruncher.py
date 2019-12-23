@@ -39,6 +39,8 @@ def settings():
 def BBP_Pi():
     clear()
     global pi_interval
+    global pi_inter_str
+    global pi_inter_clr
     global x
     global fin
     count = pi_interval
@@ -52,10 +54,11 @@ def BBP_Pi():
     for x in range(0,maxpr): 
         pi += dec((dec(1) / dec(16) ** dec(x)) * (dec(4) / (dec(8) * x + dec(1)) - dec(2) / (dec(8) * x + dec(4)) - dec(1) / (dec(8) * x + dec(5)) - dec(1) / (dec(8) * x + dec(6))))
         if dis_ch_bool:
-            print(pi)
+            lpin = len(str(pi))
+            print("\033[F\b"*lpin, pi)
         elif x == count:
             percom = x / maxpr * 100
-            print("\033[A\b\b\b\b\b\b",'%.3f'%(percom),r"%")
+            print("\033[F\b\b\b\b\b\b",'%.3f'%(percom),r"%")
             count += 1
     finalpi = dec(int(pi * dec(10 ** maxpr)) / dec(10 ** maxpr))
     tend = time.perf_counter()
@@ -91,10 +94,11 @@ def Euler():
     for x in range(0,maxpr):
         euler += dec(dec(1) / dec(factorial(int(x))))
         if dis_ch_bool:
-            print(euler)
+            leulern = len(str(euler))
+            print("\033[F\b"*leulern, euler)
         elif x == count:
             percom = x / maxpr * 100
-            print("\033[A\b\b\b\b\b\b",'%.3f'%(percom),r"%")
+            print("\033[F\b\b\b\b\b\b",'%.3f'%(percom),r"%")
             count += 1 
     finaleuler = dec(int(euler * dec(10 ** maxpr)) / dec(10 ** maxpr))
     tend = time.perf_counter()
@@ -162,35 +166,61 @@ dis_ch_bool = 0
 waitsetc = 1
 maxpr = 0
 lensub = 2
+pi = 0
+option = 0
+go =  bool(True)
 fin = bool(0)
 clear()
 settings()
 print(r"Select Constant to compute")
 print("1:PI\n2:Euler\n3:Root\n4:Golden Ratio")
-option = int(input("Option:"))
+try:
+    option = int(input("Option:"))
+except:
+    pass
 clear()
 if option < 5 and option > 0:
-    maxpr = int(input("Precicion:"))
-if option == 1 or option == 2:
-    print(r"Output Text file Y/N")
-    textfc = str(input())
-    print(r"Display Interval Y/N")
-    dis_ch_var = str(input())
-    if dis_ch_var == "Y" or dis_ch_var == "y":
-        dis_ch_bool = bool(1)
-    wait()
+    try:
+        maxpr = int(input("Precicion:"))
+    except:
+        go = bool(False)
+if go:
+    if option == 1 or option == 2:
+        print(r"Output Text file Y/N")
+        textfc = str(input())
+        print(r"Display Interval Y/N")
+        dis_ch_var = str(input())
+        if dis_ch_var == "Y" or dis_ch_var == "y":
+            dis_ch_bool = bool(1)
+        wait()
 if option == 1:
     getcontext().prec = maxpr + 32
-    BBP_Pi()
+    if go:
+        BBP_Pi()
+    else:
+        clear()
+        print("Invalid Option")
 elif option == 2:
     getcontext().prec = maxpr + 32
-    Euler()
+    if go:  
+        Euler()
+    else:
+        clear()
+        print("Invalid Option")
 elif option == 3:
     getcontext().prec = maxpr + 16
-    rootcrunch()
+    if go:
+        rootcrunch()
+    else:
+        clear()
+        print("Invalid Option")
 elif option == 4:
     getcontext().prec = maxpr + 8
-    Gratio()
+    if go:
+        Gratio()
+    else:
+        clear()
+        print("Invalid Option")
 else:
     clear()
     print("Invalid Option")
