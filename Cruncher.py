@@ -3,8 +3,7 @@
 import math
 import os
 import platform
-import time
-import cmath
+import time 
 from decimal import *
 from decimal import Decimal as dec
 def clear():
@@ -78,6 +77,53 @@ def BBP_Pi():
         outFile = open("PI.txt", "w+")
         outFile.write(str(finalpi))
         outFile.close()
+def chud_pi():
+    clear()
+    global pi_interval
+    global pi_inter_str
+    global pi_inter_clr
+    global x
+    global fin
+    count = pi_interval
+    fin = bool(0)
+    x = 0
+    percom = 0
+    pi_add = 0
+    max_ir = int(maxpr / 13) + 1
+    if not(dis_ch_bool):
+        print("Calculating...")
+        print("\n")
+    tstart = time.perf_counter()
+    for x in range(0,max_ir): 
+        pi_add += ((dec(-1) ** x) * dec(factorial(6*x)) * (dec(13591409) + dec(545140134) * x))/(dec(factorial(3 * x)) * (dec(factorial(x)) ** dec(3) * (dec(640320) ** (dec(3) * x + (dec(3) / dec(2))))))
+        percom = x / max_ir * 100
+        print("\033[F\b\b\b\b\b\b",'%.3f'%(percom),r"%")
+    clear()
+    print("Multiplying...")
+    pi_add *= dec(12)
+    clear()
+    print("Dividing")
+    pi = dec(1) / pi_add
+    clear()
+    print("Converting")
+    finalpi = dec(int(pi * dec(10 ** maxpr)) / dec(10 ** maxpr))
+    tend = time.perf_counter()
+    fin = bool(1)
+    clear()
+    print("Done!\n")
+    print(finalpi)
+    if maxpr == 0:
+        lensub = 0
+    else:
+        lensub = 1
+    stlength = len(str(finalpi)) - lensub
+    print("\nLength",stlength)
+    print("\nAccurate Precision",maxpr)
+    print("Time:",'%.4f'%(tend - tstart),"Seconds")
+    if textfc == "Y" or textfc == "y":
+        outFile = open("PI.txt", "w+")
+        outFile.write(str(finalpi))
+        outFile.close()    
 def Euler():
     clear()
     global e_interval
@@ -168,8 +214,9 @@ maxpr = 0
 lensub = 2
 pi = 0
 option = 0
+algo_pi = 0
 go =  bool(True)
-fin = bool(0)
+fin = bool(False)
 clear()
 settings()
 print(r"Select Constant to compute")
@@ -185,18 +232,44 @@ if option < 5 and option > 0:
     except:
         go = bool(False)
 if go:
-    if option == 1 or option == 2:
+    if option == 2:
         print(r"Output Text file Y/N")
         textfc = str(input())
         print(r"Display Interval Y/N")
         dis_ch_var = str(input())
         if dis_ch_var == "Y" or dis_ch_var == "y":
             dis_ch_bool = bool(1)
-        wait()
+        if not(option == 1):
+            wait()
 if option == 1:
-    getcontext().prec = maxpr + 32
-    if go:
+    clear()
+    print("Select Algorithm")
+    print("1:Bailey Borwein Plouffe\n2:Chudnovsky")
+    try: 
+        algo_pi = int(input("Algorithm:"))
+    except:
+        go = bool(False)
+    clear()
+    if go and algo_pi == 2:
+        print(r"Output Text file Y/N")
+        textfc = str(input())
+    if go and algo_pi == 1:
+        print(r"Output Text file Y/N")
+        textfc = str(input())
+        print(r"Display Interval Y/N")
+        dis_ch_var = str(input())
+        if dis_ch_var == "Y" or dis_ch_var == "y":
+            dis_ch_bool = bool(1)
+
+if option == 1:
+    if go and algo_pi == 1:
+        wait()
+        getcontext().prec = maxpr + 32
         BBP_Pi()
+    elif go and algo_pi == 2:
+        wait()
+        getcontext().prec = maxpr + 32
+        chud_pi()
     else:
         clear()
         print("Invalid Option")
@@ -208,14 +281,14 @@ elif option == 2:
         clear()
         print("Invalid Option")
 elif option == 3:
-    getcontext().prec = maxpr + 16
+    getcontext().prec = maxpr + 24
     if go:
         rootcrunch()
     else:
         clear()
         print("Invalid Option")
 elif option == 4:
-    getcontext().prec = maxpr + 8
+    getcontext().prec = maxpr + 16
     if go:
         Gratio()
     else:
