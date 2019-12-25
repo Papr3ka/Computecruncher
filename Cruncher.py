@@ -260,7 +260,6 @@ if option == 1:
         dis_ch_var = str(input())
         if dis_ch_var == "Y" or dis_ch_var == "y":
             dis_ch_bool = bool(1)
-
 if option == 1:
     if go and algo_pi == 1:
         wait()
